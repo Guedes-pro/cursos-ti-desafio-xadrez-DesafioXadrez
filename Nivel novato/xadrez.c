@@ -110,7 +110,7 @@ int main() {
          printf("Opção Inválida!!\n");
         break;
        }
-       printf("Sua Rainha foi movimentada %d casas com sucesso!!", rainha);
+       printf("Sua Rainha foi movimentada %d casas com sucesso!!\n", rainha);
 
 
      break;
