@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 
 int main() {
@@ -10,9 +11,10 @@ int main() {
     int rainha;
     int bispo;
     int torre;
-    int direcao;
     int movimentacao = 1;
     int escolha_pecas;
+    int escolha_direcao;
+    char direcao[10];
 
 
     /* ###################
@@ -33,7 +35,7 @@ int main() {
 
     switch (escolha_pecas)
     {
-    // Movimentos da Rainha, estrutura de repetção while
+    // ###### Movimentos da Rainha ######
     case 1:
        printf(" A Rainha andará quantas casas? (1 a 8)\n");
        scanf("%d", &rainha);
@@ -46,76 +48,58 @@ int main() {
        printf("6. Cima, Direita\n");
        printf("7. Baixo, Esquerda\n");
        printf("8. Baixo, Direita\n");
-       scanf("%d", &direcao); 
+       scanf("%d", &escolha_direcao); 
 
-       switch (direcao)
+       switch (escolha_direcao)
        {
         case 1:
-         while (movimentacao <= rainha)
-         {
-            printf("Cima\n");
-            movimentacao ++;
-         }
-        break;
+          strcpy(direcao, "Cima");
+         break;
+
         case 2:
-         while (movimentacao <= rainha)
-         {
-            printf("Baixo\n");
-            movimentacao ++;
-         }
-        break;
+          strcpy(direcao, "Baixo");
+         break;
+
         case 3:
-         while (movimentacao <= rainha)
-         {
-            printf("Esquerda\n");
-            movimentacao ++;
-         }
-        break;
+          strcpy(direcao, "Esquerda");
+         break;
+
         case 4:
-         while (movimentacao <= rainha)
-         {
-            printf("Direita\n");
-            movimentacao ++;
-         }
-        break;
+          strcpy(direcao, "Direita");
+         break;
+
         case 5:
-         while (movimentacao <= rainha)
-         {
-            printf("Cima, Esquerda\n");
-            movimentacao ++;
-         }
-        break;
+          strcpy(direcao, "Cima, Esquerda");
+         break;
+
         case 6:
-         while (movimentacao <= rainha)
-         {
-            printf("Cima, Direita\n");
-            movimentacao ++;
-         }
-        break;
+          strcpy(direcao, "Cima, Direita"); 
+         break;
+
         case 7:
-         while (movimentacao <= rainha)
-         {
-            printf("Baixo, Esquerda\n");
-            movimentacao ++;
-         }
-        break;
+          strcpy(direcao, "Baixo, Esquerda");
+         break;
+
         case 8:
-         while (movimentacao <= rainha)
+          strcpy(direcao, "Baixo, Direita");
+         break;
+
+        default:
+          printf("Opção Inválida!!\n");
+         break;
+       }
+
+       // ###### Estrutura de repetção WHILE ######
+
+       while (movimentacao <= rainha)
          {
-            printf("Baixo, Direita\n");
+            printf("%s\n", direcao);
             movimentacao ++;
          }
-        break;
-        default:
-         printf("Opção Inválida!!\n");
-        break;
-       }
-       printf("Sua Rainha foi movimentada %d casas com sucesso!!\n", rainha);
-
-
+       printf("Sua Rainha foi %d casas para %s com sucesso!!\n1\n", rainha, direcao);
      break;
 
-    // Movimentos do Bispo, estrutura de repetção do-while
+    // ###### Movimentos do Bispo ######
     case 2:
        printf(" O Bispo andará quantas casas? (1 a 8)\n");
        scanf("%d", &bispo);
@@ -124,47 +108,42 @@ int main() {
        printf("2. Cima, Direita\n");
        printf("3. Baixo, Esquerda\n");
        printf("4. Baixo, Direita\n");
-       scanf("%d", &direcao); 
+       scanf("%d", &escolha_direcao); 
 
-       switch (direcao)
+       switch (escolha_direcao)
        {
         case 1:
-         do
-         {
-            printf("Cima, Esquerda\n");
-            movimentacao ++;
-         } while (movimentacao <= bispo);
-        break;
-        case 2:
-         do
-         {
-            printf("Cima, Direita\n");
-            movimentacao ++;
-         } while (movimentacao <=  bispo);
-        break;
-        case 3:
-         do
-         {
-            printf("Baixo, Esquerda\n");
-            movimentacao ++;
-         } while (movimentacao <= bispo);
-        break;
-        case 4:
-         do
-         {
-            printf("Baixo, Direita\n");
-            movimentacao ++;
-         } while (movimentacao <= bispo);
-        break;
-        default:
-         printf("Opção Inválida!!\n");
-        break;
-       }
-       printf("Seu Bispo foi movimentado %d casas com sucesso!!\n", bispo);
+          strcpy(direcao, "Cima, Esquerda");
+         break;
 
+        case 2:
+          strcpy(direcao, "Cima, Direita");
+         break;
+
+        case 3:
+          strcpy(direcao, "Baixo, Esquerda");
+         break;
+
+        case 4:
+          strcpy(direcao, "Baixo, Esquerda");
+         break;
+
+        default:
+          printf("Opção Inválida!!\n");
+         break;
+       }
+       
+       //###### Estrutura de repetção DO-WHILE ######
+
+        do
+         {
+            printf("%s\n", direcao);
+            movimentacao ++;
+         } while (movimentacao <= bispo);
+       printf("Seu Bispo foi %d casas para %s com sucesso!!\n\n", bispo, direcao);
      break;
 
-    // Movimentos da Torre, estrutura de repetção for
+    // ###### Movimentos da Torre ######
     case 3:
        printf(" A Torre andará quantas casas? (1 a 8)\n");
        scanf("%d", &torre);
@@ -173,41 +152,40 @@ int main() {
        printf("2. Baixo\n");
        printf("3. Esquerda\n");
        printf("4. Direita\n");
-       scanf("%d", &direcao); 
+       scanf("%d", &escolha_direcao); 
 
-       switch (direcao)
+       switch (escolha_direcao)
        {
-       case 1: 
-         for(movimentacao; movimentacao <= torre; movimentacao++)
-         {
-            printf("Cima\n");
-         }  
-        break;
-       case 2: 
-         for(movimentacao; movimentacao <= torre; movimentacao++)
-         {
-            printf("Baixo\n");
-         }  
-        break;
-       case 3: 
-         for(movimentacao; movimentacao <= torre; movimentacao++)
-         {
-            printf("Esquerda\n");
-         }  
-        break;
-       case 4: 
-         for(movimentacao; movimentacao <= torre; movimentacao++)
-         {
-            printf("Direita\n");
-         }  
-        break;      
+        case 1: 
+          strcpy(direcao, "Cima"); 
+         break;
+
+        case 2:
+          strcpy(direcao, "Baixo"); 
+         break;
+
+        case 3: 
+          strcpy(direcao, "Esquerda");
+         break;
+
+        case 4: 
+          strcpy(direcao, "Direita");
+         break;      
        
-       default:
-         printf("Opção Inválida!!\n");
-        break;
-       }
-       printf("Sua Torre foi movimentada %d casas com sucesso!!\n", torre);
+        default:
+          printf("Opção Inválida!!\n");
+         break;
+       }   
+
+       // ###### Estrutura de repetção FOR ######
+
+       for(movimentacao; movimentacao <= torre; movimentacao++)
+         {
+            printf("%s\n", direcao);
+         }  
+       printf("Sua Torre foi %d casas para %s com sucesso!!\n\n", torre, direcao);
      break;
+
     default:
         printf("Opção Inválida!!\n");
      break;
