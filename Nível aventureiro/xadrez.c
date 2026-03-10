@@ -8,13 +8,13 @@ int main() {
        # DECLARAÇÃO DE VARIÁVEIS #
        ###########################*/
 
-    int rainha;
-    int bispo;
-    int torre;
+    int rainha, bispo, torre, cavalo;
     int movimentacao = 1;
     int escolha_pecas;
     int escolha_direcao;
     char direcao[10];
+    char direcao_cavalo_1[10];
+    char direcao_cavalo_2[10];
 
 
     /* ###################
@@ -26,6 +26,7 @@ int main() {
     printf("1. Rainha\n");
     printf("2. Bispo\n");
     printf("3. Torre\n");
+    printf("4. Cavalo\n");
     scanf("%d", &escolha_pecas);
 
 
@@ -184,6 +185,82 @@ int main() {
             printf("%s\n", direcao);
          }  
        printf("Sua Torre foi %d casas para %s com sucesso!!\n\n", torre, direcao);
+     break;
+
+     // ###### Movimentos do Cavalo ######
+    case 4:
+       printf(" O Cvalo andará para qual direção?\n");
+       printf("1. Esquerda, Cima\n");
+       printf("2. Esquerda, Baixo\n");
+       printf("3. Direita, Cima\n");
+       printf("4. Direita, Baixo\n");
+       printf("5. Cima, Esquerda\n");
+       printf("6. Cima, Direita\n");
+       printf("7. Baixo, Esquerda\n");
+       printf("8. Baixo, Direita\n");
+       scanf("%d", &escolha_direcao); 
+
+       switch (escolha_direcao)
+       {
+        case 1:
+          strcpy(direcao_cavalo_1, "Esquerda");
+         strcpy(direcao_cavalo_2, "Cima");
+         break;
+
+        case 2:
+         strcpy(direcao_cavalo_1, "Esquerda");
+         strcpy(direcao_cavalo_2, "Baixo");
+         break;
+
+        case 3:
+          strcpy(direcao_cavalo_1, "Direita");
+          strcpy(direcao_cavalo_2, "Cima");
+         break;
+
+        case 4:
+          strcpy(direcao_cavalo_1, "Direita");
+          strcpy(direcao_cavalo_2, "Baixo");
+         break;
+
+        case 5:
+          strcpy(direcao_cavalo_1, "Cima");
+          strcpy(direcao_cavalo_2, "Esquerda");
+         break;
+
+        case 6:
+          strcpy(direcao_cavalo_1, "Cima");
+          strcpy(direcao_cavalo_2, "Direita");
+
+         break;
+
+        case 7:
+          strcpy(direcao_cavalo_1, "Baixo");
+          strcpy(direcao_cavalo_2, "Esquerda");
+         break;
+
+        case 8:
+          strcpy(direcao_cavalo_1, "Baixo");
+          strcpy(direcao_cavalo_2, "Direita");
+         break;
+
+        default:
+          printf("Opção Inválida!!\n");
+         break;
+       }
+
+       // ###### Estrutura de repetção LOOP ANINHADO ######
+
+       
+       while (movimentacao == 1)
+         {
+            for (cavalo = 1; cavalo <= 2; cavalo++){
+              printf("%s\n", direcao_cavalo_1);
+            }
+           
+            printf("%s\n", direcao_cavalo_2);
+            movimentacao --;
+         }
+       printf("Seu Cavalo foi para %s, %s com sucesso!!\n\n", direcao_cavalo_1, direcao_cavalo_2);
      break;
 
     default:
